@@ -1,0 +1,216 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      { "name": "_switchboard", "type": "address" },
+      { "name": "_houseVault", "type": "address" },
+      { "name": "_controller", "type": "address" },
+      { "name": "_queueId", "type": "bytes32" }
+    ]
+  },
+
+
+  {
+    "type": "function",
+    "name": "owner",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "type": "address" }]
+  },
+  {
+    "type": "function",
+    "name": "controller",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "type": "address" }]
+  },
+  {
+    "type": "function",
+    "name": "houseVault",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "type": "address" }]
+  },
+  {
+    "type": "function",
+    "name": "switchboard",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "type": "address" }]
+  },
+  {
+    "type": "function",
+    "name": "queueId",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "type": "bytes32" }]
+  },
+  {
+    "type": "function",
+    "name": "currentRoundId",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+  {
+    "type": "function",
+    "name": "nextBetId",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [{ "type": "uint256" }]
+  },
+
+  {
+    "type": "function",
+    "name": "rounds",
+    "stateMutability": "view",
+    "inputs": [{ "name": "", "type": "uint256" }],
+    "outputs": [
+      { "name": "id", "type": "uint256" },
+      { "name": "bettingClosesAt", "type": "uint64" },
+      { "name": "resolved", "type": "bool" },
+      { "name": "randomRequested", "type": "bool" },
+      { "name": "resultNumber", "type": "uint8" },
+      { "name": "randomnessId", "type": "bytes32" }
+    ]
+  },
+
+  {
+    "type": "function",
+    "name": "bets",
+    "stateMutability": "view",
+    "inputs": [{ "name": "", "type": "uint256" }],
+    "outputs": [
+      { "name": "player", "type": "address" },
+      { "name": "campaign", "type": "address" },
+      { "name": "ticketId", "type": "uint256" },
+      { "name": "betType", "type": "uint8" },
+      { "name": "param", "type": "uint8" },
+      { "name": "processed", "type": "bool" }
+    ]
+  },
+
+  {
+    "type": "function",
+    "name": "betsByRound",
+    "stateMutability": "view",
+    "inputs": [
+      { "name": "", "type": "uint256" },
+      { "name": "", "type": "uint256" }
+    ],
+    "outputs": [{ "type": "uint256" }]
+  },
+
+  {
+    "type": "function",
+    "name": "createRound",
+    "stateMutability": "nonpayable",
+    "inputs": [{ "name": "bettingClosesAt", "type": "uint64" }],
+    "outputs": []
+  },
+
+  {
+    "type": "function",
+    "name": "placeBet",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      { "name": "campaign", "type": "address" },
+      { "name": "ticketId", "type": "uint256" },
+      { "name": "betType", "type": "uint8" },
+      { "name": "numbers", "type": "uint8[]" },
+      { "name": "param", "type": "uint8" }
+    ],
+    "outputs": [{ "type": "uint256" }]
+  },
+
+  {
+    "type": "function",
+    "name": "requestRoundRandomness",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      { "name": "roundId", "type": "uint256" },
+      { "name": "minDelay", "type": "uint64" }
+    ],
+    "outputs": []
+  },
+
+  {
+    "type": "function",
+    "name": "finalizeRoundFromRandomness",
+    "stateMutability": "nonpayable",
+    "inputs": [{ "name": "roundId", "type": "uint256" }],
+    "outputs": []
+  },
+
+  {
+    "type": "function",
+    "name": "emergencyWithdrawTicket",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      { "name": "campaign", "type": "address" },
+      { "name": "tokenId", "type": "uint256" },
+      { "name": "to", "type": "address" }
+    ],
+    "outputs": []
+  },
+
+
+  {
+    "type": "event",
+    "name": "RoundCreated",
+    "inputs": [
+      { "name": "roundId", "type": "uint256", "indexed": true },
+      { "name": "bettingClosesAt", "type": "uint64", "indexed": false }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "RoundRandomnessRequested",
+    "inputs": [
+      { "name": "roundId", "type": "uint256", "indexed": true },
+      { "name": "randomnessId", "type": "bytes32", "indexed": false }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "RoundResolved",
+    "inputs": [
+      { "name": "roundId", "type": "uint256", "indexed": true },
+      { "name": "resultNumber", "type": "uint8", "indexed": false }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "BetPlaced",
+    "inputs": [
+      { "name": "roundId", "type": "uint256", "indexed": true },
+      { "name": "betId", "type": "uint256", "indexed": true },
+      { "name": "player", "type": "address", "indexed": true },
+      { "name": "campaign", "type": "address", "indexed": false },
+      { "name": "ticketId", "type": "uint256", "indexed": false },
+      { "name": "betType", "type": "uint8", "indexed": false }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "BetWon",
+    "inputs": [
+      { "name": "roundId", "type": "uint256", "indexed": true },
+      { "name": "betId", "type": "uint256", "indexed": true },
+      { "name": "player", "type": "address", "indexed": true },
+      { "name": "campaign", "type": "address", "indexed": false },
+      { "name": "ticketId", "type": "uint256", "indexed": false }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "BetLost",
+    "inputs": [
+      { "name": "roundId", "type": "uint256", "indexed": true },
+      { "name": "betId", "type": "uint256", "indexed": true },
+      { "name": "player", "type": "address", "indexed": true },
+      { "name": "campaign", "type": "address", "indexed": false },
+      { "name": "ticketId", "type": "uint256", "indexed": false }
+    ]
+  }
+]

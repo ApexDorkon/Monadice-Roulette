@@ -1,0 +1,109 @@
+[
+  {
+    "type": "function",
+    "name": "createRandomness",
+    "stateMutability": "nonpayable",
+    "inputs": [
+      {
+        "name": "randomnessId",
+        "type": "bytes32"
+      },
+      {
+        "name": "minSettlementDelay",
+        "type": "uint64"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "oracle",
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "getRandomness",
+    "stateMutability": "view",
+    "inputs": [
+      {
+        "name": "randomnessId",
+        "type": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "randId",
+        "type": "bytes32"
+      },
+      {
+        "name": "createdAt",
+        "type": "uint256"
+      },
+      {
+        "name": "authority",
+        "type": "address"
+      },
+      {
+        "name": "rollTimestamp",
+        "type": "uint256"
+      },
+      {
+        "name": "minSettlementDelay",
+        "type": "uint64"
+      },
+      {
+        "name": "oracle",
+        "type": "address"
+      },
+      {
+        "name": "value",
+        "type": "uint256"
+      },
+      {
+        "name": "settledAt",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "isRandomnessReady",
+    "stateMutability": "view",
+    "inputs": [
+      {
+        "name": "randomnessId",
+        "type": "bytes32"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "ready",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "type": "function",
+    "name": "settleRandomness",
+    "stateMutability": "payable",
+    "inputs": [
+      {
+        "name": "encodedRandomness",
+        "type": "bytes"
+      }
+    ],
+    "outputs": []
+  },
+  {
+    "type": "function",
+    "name": "updateFee",
+    "stateMutability": "view",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "fee",
+        "type": "uint256"
+      }
+    ]
+  }
+]
