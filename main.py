@@ -15,7 +15,7 @@ RPC_URL = os.getenv("RPC_URL")
 PRIVATE_KEY = os.getenv("PRIVATE_KEY")
 ROULETTE_CONTRACT = Web3.to_checksum_address(os.getenv("ROULETTE_CONTRACT"))
 SWITCHBOARD_CONTRACT = Web3.to_checksum_address(os.getenv("SWITCHBOARD_CONTRACT"))
-CHAIN_ID = int(os.getenv("CHAIN_ID", "10143"))
+CHAIN_ID = int(os.getenv("CHAIN_ID", "143"))
 
 print("\n================ BOOT =================")
 print("RPC_URL:", RPC_URL)
@@ -52,7 +52,7 @@ def gas():
     cfg = {
         "from": account.address,
         "nonce": w3.eth.get_transaction_count(account.address),
-        "gas": 400_000,
+        "gas": 800_000,
         "gasPrice": w3.eth.gas_price,
     }
     print("\n[GAS]")
@@ -261,7 +261,7 @@ def finalize_round(round_id: int):
 
         print("\n[BUILD FINALIZE TX]")
         tx = roulette.functions.finalizeRoundFromRandomness(round_id).build_transaction(
-            {**gas(), "gas": 3_000_000}
+            {**gas(), "gas": 400_000}
         )
         pp.pprint(tx)
 
